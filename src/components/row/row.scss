@@ -1,0 +1,53 @@
+tao-row {
+  display: block;
+  padding-bottom: 20px;
+  overflow-wrap: break-word;
+
+  &.big-icon-text {
+    margin-: auto;
+    display: flex;
+    align-items: center;
+    img {
+      padding-right: 5px !important;
+      width: 40px;
+    }
+  }
+
+  *:first-child {
+    margin-right: 5px;
+  }
+
+  &.vertical-align-middle {
+    margin-: auto;
+    display: flex;
+    align-items: center;
+  }
+
+  &.align-center {
+    text-align: center;
+    justify-content: center;
+  }
+
+  &.no-padding {
+    padding: 0;
+  }
+
+  &.extra-top-padding {
+    padding-top: 20px;
+  }
+
+  &.extra-bottom-padding {
+    padding-bottom: 30px;
+  }
+
+  &.align-last-child-right {
+    display: flex;
+    align-items: center;
+    *:last-child {
+      flex: 1;
+      text-align: end;
+      margin-right: 0px;
+    }
+  }
+
+}
