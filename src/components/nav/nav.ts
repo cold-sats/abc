@@ -3,6 +3,7 @@ import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Location } from '@angular/common'
 import { Router } from '@angular/router';
+import { debounceTime } from 'rxjs/operators';
 
 import { DataProvider } from 'src/providers/data'
 
@@ -44,6 +45,9 @@ export class NavComponent implements OnInit {
           this.navLocation = 'bottom';
         }
       });
+      this.form.valueChanges.pipe(
+        debounceTime(300)
+      ).subscribe(val => this.updateSearch());
   }
 
   updateSearch() {
