@@ -20,7 +20,7 @@ export const materialDesignComponents = [
   ReactiveFormsModule
 ];
 
-export const abcComponents = [
+export const taoComponents = [
   ButtonComponent,
   DividerComponent,
   InputComponent,

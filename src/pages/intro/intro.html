@@ -1,0 +1,22 @@
+<tao-nav>
+</tao-nav>
+
+<tao-wrapper>
+
+  <ng-container *ngFor="let image of data.shownImages; let i = index">
+    <div *ngIf="i%4==0" style="width: 100%; display: flex;">
+      <img
+        [src]="image?.ordinal_img_url">
+      <img
+        *ngIf="data.shownImages[i+1]?.ordinal_img_url"
+        [src]="data.shownImages[i+1]?.ordinal_img_url">
+      <img
+        *ngIf="data.shownImages[i+2]?.ordinal_img_url"
+        [src]="data.shownImages[i+2]?.ordinal_img_url">
+      <img
+        *ngIf="data.shownImages[i+3]?.ordinal_img_url"
+        [src]="data.shownImages[i+3]?.ordinal_img_url">
+    </div>
+  </ng-container>
+
+</tao-wrapper>

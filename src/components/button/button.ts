@@ -1,8 +1,7 @@
-import { Component, Input, ViewEncapsulation, Renderer2, ElementRef } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
-  selector: 'abc-button',
+  selector: 'tao-button',
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['./button.scss'],
   template: `
@@ -19,8 +18,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
         </span>
         <div
           *ngIf="isLoading"
-          class="loader"
-          [ngClass]="platformClass">
+          class="loader">
         </div>
       </button>
     </div>
@@ -33,24 +31,6 @@ export class ButtonComponent {
   @Input() disabled = false;
   @Input() text: string;
   isLoading: boolean;
-  platformClass: string;
-
-  constructor(
-    private el : ElementRef,
-    private responsive: BreakpointObserver,
-    private renderer : Renderer2
-  ) {}
-
-  ngOnInit() {
-    this.responsive.observe('(min-width: 650px)')
-      .subscribe(result => {
-        if (result.matches) {
-          this.platformClass = 'desktop-button';
-        } else {
-          this.platformClass = 'mobile-button';
-        }
-      });
-  }
 
   async executeAction() {
     if (this.isLoading || !this.action) {

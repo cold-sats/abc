@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 
 @Component({
-  selector: 'abc-skeleton',
+  selector: 'tao-skeleton',
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['./skeleton.scss'],
   template: `

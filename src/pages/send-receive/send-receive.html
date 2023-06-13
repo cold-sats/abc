@@ -1,0 +1,29 @@
+<tao-nav
+  [title]="'Send Bitcoin'">
+</tao-nav>
+
+<tao-wrapper>
+
+  <tao-row class="vertical-align-middle align-last-child-right link" (click)="goToPage('deposit')">
+    <img [src]="'assets/images/deposit-bitcoin.svg'" class="large-icon">
+    <tao-text
+      [hero]="'Deposit'">
+    </tao-text>
+    <div>
+      <img [src]="'assets/images/right-arrow-white.svg'" class="large-right-arrow">
+    </div>
+  </tao-row>
+
+  <tao-divider></tao-divider>
+
+  <tao-row class="vertical-align-middle align-last-child-right link" (click)="goToPage('withdraw')">
+    <img [src]="'assets/images/bitcoin-withdraw.svg'" class="large-icon">
+    <tao-text
+    [hero]="'Withdraw'">
+    </tao-text>
+    <div>
+      <img [src]="'assets/images/right-arrow-white.svg'" class="large-right-arrow">
+    </div>
+  </tao-row>
+
+</tao-wrapper>

@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
-  selector: 'abc-divider',
+  selector: 'tao-divider',
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['./divider.scss'],
   template: `

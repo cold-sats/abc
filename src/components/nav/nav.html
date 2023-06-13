@@ -2,44 +2,19 @@
 
   <div class="desktop-nav-container">
     <a (click)="goToPage('/')">
-      <img src="assets/images/tao-t-black.svg" class="desktop-tao-logo">
+      <img src="assets/images/abc.png" class="desktop-tao-logo">
     </a>
-    <div class="desktop-padding" *ngIf="!hideMenuButtons">
-      <a (click)="goToPage('dashboard')" class="margin-left-70">
-        <img
-          [src]="currentPage == '/dashboard' ?
-          'assets/images/menu-icons/dashboard-pink.svg' :
-          'assets/images/menu-icons/dashboard-white.svg'"
-          class="menu-item margin-right-80 fade-in-button">
-      </a>
-      <a (click)="goToPage('send-receive')">
-        <img
-          [src]="currentPage == '/send-receive' ?
-          'assets/images/menu-icons/send-bitcoin-pink.svg' :
-          'assets/images/menu-icons/send-bitcoin-white.svg'"
-          class="menu-item margin-right-80 fade-in-button">
-      </a>
-      <a (click)="goToPage('swap')">
-        <img
-          [src]="currentPage == '/swap' ?
-          'assets/images/menu-icons/bitcoin-swap-pink.svg' :
-          'assets/images/menu-icons/bitcoin-swap-white.svg'"
-          class="menu-item margin-right-80 fade-in-button">
-      </a>
-      <a (click)="goToPage('settings')">
-        <img
-          [src]="currentPage == '/settings' ?
-          'assets/images/menu-icons/settings-pink.svg' :
-          'assets/images/menu-icons/settings-white.svg'"
-          class="menu-item margin-right-80 fade-in-button">
-      </a>
-    </div>
-  </div>
-
-  <div class="desktop-title-container">
-    <span *ngIf="title" class="desktop-title">
-      {{title}}
-    </span>
+    <form [formGroup]="form" novalidate action="#">
+      <div style="width:25%; margin: auto; height; padding-top:8px">
+        <tao-input
+          formControlName="search"
+          [form]="form.controls['search']"
+          [label]="'Search'"
+          [icon]="'assets/images/search.png'"
+          (keyup)="updateSearch()">
+        </tao-input>
+      </div>
+    </form>
   </div>
 
   <div class="desktop-back-button-container">
@@ -59,7 +34,7 @@
 </ng-container>
 
 <ng-container *ngIf="navLocation == 'bottom'">
-  
+
   <div class="mobile-nav-container" *ngIf="!hideMenuButtons">
     <div class="margin-top-15">
       <a (click)="goToPage('dashboard')" class="margin-right-8">

@@ -1,7 +1,7 @@
 import {Component, ViewEncapsulation, Input, OnInit, OnChanges, Output, EventEmitter, ElementRef, AfterViewInit} from '@angular/core';
 
 @Component({
-  selector: 'abc-text',
+  selector: 'tao-text',
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['./text.scss'],
   template: `

@@ -1,0 +1,56 @@
+img {
+  width: calc(25% - 10px);
+  padding: 5px;
+  cursor: pointer;
+}
+
+img:hover {
+  opacity: 0.9;
+  filter: alpha(opacity=100);
+}
+
+.intro-page-container {
+  height: 100%;
+  display: block;
+}
+
+.desktop-button {
+  width: 400px;
+  margin: auto;
+  position: fixed;
+  left: 1%;
+  right: 1%;
+}
+
+.mobile-button {
+  width:90%;
+  margin: auto;
+  position: fixed;
+  left: 1%;
+  right: 1%;
+}
+
+.bottom-120 {
+   bottom: 120px;
+}
+
+.bottom-50 {
+   bottom: 50px;
+}
+
+.page-container {
+  width: 400px;
+  margin: auto;
+}
+
+.video-container {
+  overflow:hidden;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  margin-top: -100px;
+}
+
+.video {
+  pointer-events: none;
+}

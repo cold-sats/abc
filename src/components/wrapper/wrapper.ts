@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation, Input, Renderer2, ElementRef } fr
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
-  selector: 'abc-wrapper',
+  selector: 'tao-wrapper',
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['./wrapper.scss'],
   template: `

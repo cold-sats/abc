@@ -3,7 +3,7 @@ import { Form, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ValueAccessorBase } from 'src/components/input/value-accessor';
 
 @Component({
-  selector: 'abc-input',
+  selector: 'tao-input',
   templateUrl: 'input.html',
   styleUrls: ['./input.scss'],
   encapsulation: ViewEncapsulation.None,

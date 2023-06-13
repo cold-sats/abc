@@ -2,7 +2,7 @@ import { Component, NgModule, OnInit } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
-import { data } from 'src/data/data'
+import { TaoWalletProvider } from 'src/providers/tao-wallet'
 
 @Component({
   templateUrl: './dashboard.html'
@@ -10,27 +10,18 @@ import { data } from 'src/data/data'
 
 export class DashboardPage implements OnInit {
 
+  balances: any;
   loaded: boolean;
-  selectedImage: any;
-  images: any[];
 
   constructor(
     private router: Router,
+    private tao: TaoWalletProvider
   ) {}
 
   async ngOnInit() {
     this.loaded = false;
-    this.selectedImage = data['2336'];
-    this.images = [];
-    Object.keys(data).forEach((key) => {
-      this.images.push({
-        ...data[key]
-      });
-    });
-    console.log(this.images[15])
-    console.log(this.selectedImage)
-    console.log('1')
     try {
+      this.balances = await this.tao.fetchBalances();
       this.loaded = true;
     } catch(err) {
       console.log(err)

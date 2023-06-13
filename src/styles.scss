@@ -1,5 +1,37 @@
 .app-background {
-  background-color: black;
+  background-color: #212121;
+}
+
+.large-icon {
+  width: 50px;
+  margin-right: 20px !important;
+}
+
+.large-right-arrow {
+  height: 40px;
+}
+
+.link {
+  cursor: pointer;
+  &:hover {
+    filter: brightness(0) saturate(100%) invert(96%) sepia(45%) saturate(5035%) hue-rotate(277deg) brightness(95%) contrast(97%);
+  }
+}
+
+.hero-icon {
+  width: 30%;
+  cursor: pointer;
+  &:hover {
+    filter: brightness(0) saturate(100%) invert(96%) sepia(45%) saturate(5035%) hue-rotate(277deg) brightness(95%) contrast(97%);
+  }
+}
+
+.selected-icon {
+  filter: brightness(0) saturate(100%) invert(96%) sepia(45%) saturate(5035%) hue-rotate(277deg) brightness(95%) contrast(97%);
+}
+
+.margin-right-40 {
+  margin-right: 40px;
 }
 
 .link {
@@ -13,119 +45,10 @@
   opacity: 70%
 }
 
-.desktop-white-background {
-  background-color: white;
-  margin: -10px -8px -8px -8px;
-  padding-bottom: 15px;
+body::-webkit-scrollbar {
+  display: none;
 }
 
-.desktop-title-description-container {
-  margin: auto;
-  margin-left: 5px;
-}
-
-.desktop-image {
-  width: 93px;
-  margin-right: 15px;
-}
-
-.desktop-header {
-  font: 20px Avenir, serif;
-  color: white;
-}
-
-.desktop-page-title {
-  font: 90px Neuton, serif;
-  font-weight: 900;
-  color: black;
-  margin: auto;
-  text-align: center;
-  margin-bottom: -5px;
-  max-width: 700px
-}
-
-.desktop-page-subtitle {
-  font: 300 25px Avenir, serif;
-  color: black;
-  margin: auto;
-  text-align: center;
-  margin-bottom: -5px;
-  max-width: 700px;
-}
-
-.desktop-section-title {
-  font: 500 40px Avenir, serif;
-  color: white;
-}
-
-.desktop-title {
-  font: 500 25px Avenir, serif;
-  color: white;
-}
-
-.mobile-white-background {
-  background-color: white;
-  margin: -10px -8px -8px -8px;
-  padding: 5px 20px 20px 20px;
-}
-
-.mobile-title-description-container {
-  display: flex;
-}
-
-.mobile-content-container {
-  text-decoration: none;
-}
-
-.mobile-header {
-  font: 17px Avenir, serif;
-  color: white;
-}
-
-.mobile-page-title {
-  font: 100px Neuton, serif;
-  padding-bottom: 5px;
-  font-weight: 900;
-  color: black;
-  text-align: center;
-  margin: auto;
-  margin-bottom: 5px;
-  max-width: 700px;
-}
-
-.mobile-page-subtitle {
-  font: 300 17px Avenir, serif;
-  color: black;
-  text-align: center;
-  margin: auto;
-  max-width: 700px;
-}
-
-.mobile-title {
-  font: 500 22px Avenir, serif;
-  color: white;
-}
-
-.mobile-image {
-  width: 35px;
-  margin-right: 10px;
-  margin-bottom: 10px
-}
-
-.mobile-section-title {
-  font: 500 40px Avenir, serif;
-  color: white;
-}
-
-.content-container {
-  margin: auto;
-  width: auto;
-  max-width: 800px;
-  padding: 20px;
-}
-
-.button-container {
-  display: flex;
-  padding: 0px;
-  text-decoration: none;
+html {
+  scrollbar-width: none;
 }

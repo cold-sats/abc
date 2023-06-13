@@ -26,6 +26,7 @@ tao-button {
 
   button {
     height:50px;
+    padding: 5px 5px !important;
     display: block;
     width: 100%;
     white-space: normal !important;
@@ -66,15 +67,8 @@ tao-button {
                       linear-gradient(#FFF 50px, transparent 0),
                       linear-gradient(#FFF 50px, transparent 0),
                       linear-gradient(#FFF 50px, transparent 0);
-    animation: rikSpikeRoll 0.65s linear infinite alternate;
-  }
-
-  .desktop-button {
     background-position: 205px center, 220px center, 235px center, 250px center, 265px center, 280px center, 295px center;
-  }
-
-  .mobile-button {
-    background-position: 40% center, 44% center, 48% center, 52% center, 56% center, 60% center, 64% center;
+    animation: rikSpikeRoll 0.65s linear infinite alternate;
   }
 
   @keyframes rikSpikeRoll {
