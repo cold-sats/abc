@@ -1,11 +1,16 @@
+::ng-deep .mat-form-field-wrapper{
+   margin-bottom: -1.25em;
+}
+
 mat-form-field {
   width: 100%;
 
   .mat-form-field-outline {
-    color: white !important;
+    color: black !important;
+    opacity: 40%;
   }
   .mat-form-field-label {
-    color: white !important;
+    color: black !important;
     font: Avenir, serif !important;
     font-weight: 300 !important;
   }
@@ -14,12 +19,12 @@ mat-form-field {
 input {
   font: 16px Avenir, serif !important;
   font-weight: 300 !important;
-  color: white !important;
+  color: black !important;
 }
 
 .outline-field-label-icon{
-  height: 16px;
-  width: 16px;
+  height: 14px;
+  width: 14px;
   margin-right: 5px;
   margin-bottom: -3px;
 }

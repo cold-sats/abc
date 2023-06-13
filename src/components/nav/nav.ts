@@ -1,7 +1,10 @@
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Location } from '@angular/common'
 import { Router } from '@angular/router';
+
+import { DataProvider } from 'src/providers/data'
 
 @Component({
   selector: 'tao-nav',
@@ -12,6 +15,7 @@ import { Router } from '@angular/router';
 
 export class NavComponent implements OnInit {
 
+  form: UntypedFormGroup;
   @Input() hideMenuButtons: string;
   @Input() showBackButton: boolean = false;
   @Input() title: string;
@@ -19,10 +23,16 @@ export class NavComponent implements OnInit {
   navLocation: string;
 
   constructor(
+    public data: DataProvider,
+    private fb: UntypedFormBuilder,
     private location: Location,
     private responsive: BreakpointObserver,
     private router: Router
-  ) {}
+  ) {
+    this.form = this.fb.group({
+      search: ['', Validators.required]
+    });
+  }
 
   ngOnInit() {
     this.currentPage = this.router.routerState.snapshot.url;
@@ -34,6 +44,10 @@ export class NavComponent implements OnInit {
           this.navLocation = 'bottom';
         }
       });
+  }
+
+  updateSearch() {
+    this.data.searchForImage(this.form.value.search);
   }
 
   goToPage(page) {

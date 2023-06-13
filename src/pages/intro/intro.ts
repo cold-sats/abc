@@ -1,7 +1,8 @@
-import { Component, NgModule, OnInit, ElementRef } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+
+import { DataProvider } from 'src/providers/data'
 
 @Component({
   templateUrl: './intro.html',
@@ -10,36 +11,13 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 export class IntroPage implements OnInit {
 
-  showLoginButtons: boolean;
-  showDesktopWidth: boolean;
-
   constructor(
-    private el : ElementRef,
-    private responsive: BreakpointObserver,
-    public router: Router
+    public data: DataProvider,
+    private router: Router,
   ) {}
 
-  ngOnInit() {
-    const video = document.getElementById("video") as HTMLVideoElement;
-    video.muted = true;
-    video.play();
-    setTimeout(() => this.showLoginButtons = true, 3300);
-    this.responsive.observe('(min-width: 650px)')
-      .subscribe(result => {
-        if (result.matches) {
-          this.showDesktopWidth = true;
-        } else {
-          this.showDesktopWidth = false;
-        }
-      });
-  }
-
-  goToGetStartedPage() {
-    this.router.navigate(['get-started']);
-  }
-
-  goToLoginPage() {
-    this.router.navigate(['login']);
+  async ngOnInit() {
+    this.data.parseData();
   }
 
 }

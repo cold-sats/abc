@@ -1,24 +1,22 @@
-<div class="intro-page-container">
-  <div class="video-container">
-    <video class="video" id="video" playsinline autoplay muted="true">
-      <source src="https://user-images.githubusercontent.com/39313620/196024263-5d28afc2-7353-4b87-9765-e5fa21cf404f.mp4" type="video/mp4" />
-    </video>
-  </div>
+<tao-nav>
+</tao-nav>
 
-  <div class="page-container">
-    <ng-container *ngIf="showLoginButtons">
-      <tao-button
-        [ngClass]="showDesktopWidth ? 'desktop-button' : 'mobile-button'"
-        [text]="'Get Started'"
-        class="primary fade-in-button bottom-120"
-        [action]="goToGetStartedPage.bind(this)">
-      </tao-button>
-      <tao-button
-        [ngClass]="showDesktopWidth ? 'desktop-button' : 'mobile-button'"
-        [text]="'Login'"
-        class="secondary fade-in-button bottom-50"
-        [action]="goToLoginPage.bind(this)">
-      </tao-button>
-    </ng-container>
-  </div>
-<div>
+<tao-wrapper>
+
+  <ng-container *ngFor="let image of data.shownImages; let i = index">
+    <div *ngIf="i%4==0" style="width: 100%; display: flex;">
+      <img
+        [src]="image?.ordinal_img_url">
+      <img
+        *ngIf="data.shownImages[i+1]?.ordinal_img_url"
+        [src]="data.shownImages[i+1]?.ordinal_img_url">
+      <img
+        *ngIf="data.shownImages[i+2]?.ordinal_img_url"
+        [src]="data.shownImages[i+2]?.ordinal_img_url">
+      <img
+        *ngIf="data.shownImages[i+3]?.ordinal_img_url"
+        [src]="data.shownImages[i+3]?.ordinal_img_url">
+    </div>
+  </ng-container>
+
+</tao-wrapper>
