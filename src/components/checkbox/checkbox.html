@@ -1,0 +1,13 @@
+<label>
+  <tao-text
+    [body]="label">
+  </tao-text>
+</label>
+
+<section>
+  <mat-checkbox (change)="selectItem()" [(ngModel)]="value" *ngFor="let item of items" >
+    <tao-text
+      [body]="item.viewValue">
+    </tao-text>
+  </mat-checkbox>
+</section>

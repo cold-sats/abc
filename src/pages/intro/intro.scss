@@ -1,5 +1,48 @@
-img {
+.filter-menu {
+  display: flex;
+  position: fixed;
+  top: 70px;
+  right: 0px;
+  margin: auto;
+  text-align: center;
+  background: white;
+  width: 150px;
+  height: 100%;
+  z-index: 1;
+}
+
+.tiles-1 {
+  width: calc(50% - 10px);
+  padding: 5px;
+  cursor: pointer;
+}
+
+.tiles-2 {
   width: calc(25% - 10px);
+  padding: 5px;
+  cursor: pointer;
+}
+
+.tiles-3 {
+  width: calc(12.5% - 10px);
+  padding: 5px;
+  cursor: pointer;
+}
+
+.tiles-1-filter {
+  width: calc(50% - 135px);
+  padding: 5px;
+  cursor: pointer;
+}
+
+.tiles-2-filter {
+  width: calc(25% - 72px);
+  padding: 5px;
+  cursor: pointer;
+}
+
+.tiles-3-filter {
+  width: calc(12.5% - 41px);
   padding: 5px;
   cursor: pointer;
 }

@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { debounceTime } from 'rxjs/operators';
 
 import { DataProvider } from 'src/providers/data'
+import { filters } from 'src/components/nav/filters'
 
 @Component({
   selector: 'tao-nav',
@@ -16,12 +17,15 @@ import { DataProvider } from 'src/providers/data'
 
 export class NavComponent implements OnInit {
 
+  filters: any;
+  test: boolean;
   form: UntypedFormGroup;
   @Input() hideMenuButtons: string;
   @Input() showBackButton: boolean = false;
   @Input() title: string;
   currentPage: string;
   navLocation: string;
+  selectedFilters: any;
 
   constructor(
     public data: DataProvider,
@@ -36,6 +40,10 @@ export class NavComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.selectedFilters = [];
+    this.filters = filters;
+    this.test = true;
+    this.data.view = 'tiles-2';
     this.currentPage = this.router.routerState.snapshot.url;
     this.responsive.observe('(min-width: 650px)')
       .subscribe(result => {
@@ -60,6 +68,33 @@ export class NavComponent implements OnInit {
 
   goBack() {
     this.location.back()
+  }
+
+  toggleView() {
+    if (this.data.view == 'tiles-1') {
+      this.data.view = 'tiles-2';
+    } else if (this.data.view == 'tiles-2') {
+      this.data.view = 'tiles-3';
+    } else if (this.data.view == 'tiles-3') {
+      this.data.view = 'tiles-1';
+    }
+  }
+
+  toggleFilter() {
+    this.data.showFilterMenu = !this.data.showFilterMenu;
+  }
+
+  selectCheckbox(name) {
+    const upperCaseName = name.toUpperCase();
+    if (this.selectedFilters.includes(upperCaseName)) {
+      const index = this.selectedFilters.indexOf(upperCaseName);
+      if (index !== -1) {
+        this.selectedFilters.splice(index, 1);
+      }
+    } else {
+      this.selectedFilters.push(upperCaseName);
+    }
+    this.data.filterImages(this.selectedFilters);
   }
 
 }

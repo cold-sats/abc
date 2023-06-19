@@ -2,10 +2,10 @@
 
   <div class="desktop-nav-container">
     <a (click)="goToPage('/')">
-      <img src="assets/images/abc.png" class="desktop-tao-logo">
+      <img src="assets/images/abc.png" class="logo">
     </a>
-    <form [formGroup]="form" novalidate action="#">
-      <div style="width:25%; margin: auto; height; padding-top:8px">
+    <form [formGroup]="form" novalidate action="#" style="display: block; margin: auto; width: 25%; padding-left: 12%; padding-top:3px">
+      <div>
         <tao-input
           formControlName="search"
           [form]="form.controls['search']"
@@ -14,6 +14,34 @@
         </tao-input>
       </div>
     </form>
+    <div style="margin-left: auto;">
+    <img [src]="'assets/images/' + data.view + '.svg'" class="tiles-image" (click)="toggleView()">
+    <img src="assets/images/filter.svg" class="filter-image" (click)="toggleFilter()">
+    </div>
+  </div>
+
+  <div class="filter-menu" [ngStyle]="{'visibility': data.showFilterMenu ? 'visible' : 'hidden'}" style="overflow: auto;">
+    <tao-row>
+      <img src="assets/images/filter.svg" class="filter-icon">
+      <tao-text
+        [title]="'Filter'">
+      </tao-text>
+    </tao-row>
+    <tao-row *ngFor="let filter of filters">
+      <tao-text
+        [header]="filter.title">
+      </tao-text>
+      <div *ngFor="let checkbox of filter.items">
+        <abc-checkbox
+          (checkedChange)="selectCheckbox(checkbox.name)"
+          [items]="[
+            {
+              viewValue: checkbox.name + ' (' + checkbox.number + ')', value: true
+            }
+          ]">
+        </abc-checkbox>
+      </div>
+    </tao-row>
   </div>
 
   <div class="desktop-back-button-container">

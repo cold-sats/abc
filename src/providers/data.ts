@@ -8,6 +8,8 @@ export class DataProvider {
   shownImages: any[];
   allImages: any[];
   isSearching: boolean;
+  view: any;
+  showFilterMenu: boolean;
 
   constructor() {}
 
@@ -18,12 +20,13 @@ export class DataProvider {
         ...data[key]
       });
     });
+    this.allImages.sort
+    this.allImages.sort((a, b) => a.howrare.rank > b.howrare.rank ? 1 : -1);
     this.shownImages = this.allImages;
     console.log(this.shownImages[190])
   }
 
   async searchForImage(search) {
-    console.log(search)
     let chosenTrait = null;
     if (this.isSearching) {
       return;
@@ -47,14 +50,37 @@ export class DataProvider {
       image.howrare.attributes.map((attribute) => {
         if (!chosenTrait || chosenTrait.toUpperCase() == attribute.name.toUpperCase()) {
           if (search.toUpperCase() == attribute.value.toUpperCase()) {
-            console.log('YEP')
             this.shownImages.push(image);
           }
         }
       });
     });
-    console.log(this.shownImages)
     this.isSearching = false;
+  }
+
+  async filterImages(items) {
+    if (this.isSearching) {
+      return;
+    }
+    if (items.length == 0) {
+      this.shownImages = this.allImages;
+      return;
+    }
+    this.isSearching = true;
+    this.shownImages = [];
+    this.allImages.map((image, index) => {
+      let attributes = [];
+      image.howrare.attributes.map((attribute) => {
+        attributes.push(attribute.value.toUpperCase());
+      });
+      const imageHasAllAttributes = items.every((element) => attributes.includes(element));
+      if (imageHasAllAttributes) {
+        this.shownImages.push(image);
+      }
+      if (index == this.allImages.length - 1) {
+        this.isSearching = false;
+      }
+    });
   }
 
 }
