@@ -15,7 +15,7 @@ import { CheckboxModel } from 'src/components/checkbox/checkbox.model';
   }],
 })
 
-export  class CheckboxComponent extends ValueAccessorBase<any> implements OnInit {
+export  class CheckboxComponent implements OnInit {
   @Input() items: CheckboxModel;
   @Input() label: string;
   @Input() icon: string;
@@ -28,8 +28,7 @@ export  class CheckboxComponent extends ValueAccessorBase<any> implements OnInit
   @Output() checkedChange = new EventEmitter<boolean>();
 
   ngOnInit() {
-    this.value = this.initValue;
-    this.selected = this.value;
+
   }
 
   selectItem() {

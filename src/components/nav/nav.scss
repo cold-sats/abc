@@ -86,6 +86,12 @@
   margin-bottom: -4px;
 }
 
+.arrow-icon {
+  height: 15px;
+  margin-bottom: -4px;
+  margin-left: 150px
+}
+
 .desktop-padding {
   padding: 13px 60px 0px 0px;
 }
@@ -237,4 +243,9 @@
 
 .margin-right-80 {
   margin-right: 80px;
+}
+
+.filter-row {
+  cursor: pointer !important;
+  padding-bottom: 10px !important;
 }

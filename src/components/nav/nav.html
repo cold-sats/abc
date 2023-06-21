@@ -15,7 +15,7 @@
       </div>
     </form>
     <div style="margin-left: auto;">
-    <img [src]="'assets/images/' + data.view + '.svg'" class="tiles-image" (click)="toggleView()">
+    <img [src]="getFilterIcon()" class="tiles-image" (click)="toggleView()">
     <img src="assets/images/filter.svg" class="filter-image" (click)="toggleFilter()">
     </div>
   </div>
@@ -27,21 +27,26 @@
         [title]="'Filter'">
       </tao-text>
     </tao-row>
-    <tao-row *ngFor="let filter of filters">
-      <tao-text
-        [header]="filter.title">
-      </tao-text>
-      <div *ngFor="let checkbox of filter.items">
-        <abc-checkbox
-          (checkedChange)="selectCheckbox(checkbox.name)"
-          [items]="[
-            {
-              viewValue: checkbox.name + ' (' + checkbox.number + ')', value: true
-            }
-          ]">
-        </abc-checkbox>
+    <ng-container *ngFor="let filter of filters; let i = index">
+      <tao-row class="filter-row" (click)="toggleFilterRow(i)">
+        <tao-text
+          [header]="filter.title">
+        </tao-text>
+        <img src="assets/images/down-arrow.svg" class="arrow-icon">
+      </tao-row>
+      <div [ngStyle]="{'display': filters[i].showExpandedFilter ? '' : 'none'}">
+        <div *ngFor="let checkbox of filter.items">
+          <abc-checkbox
+            (click)="selectCheckbox(filter.title, checkbox.name)"
+            [items]="[
+              {
+                viewValue: checkbox.name + ' (' + checkbox.number + ')', value: true
+              }
+            ]">
+          </abc-checkbox>
+        </div>
       </div>
-    </tao-row>
+    </ng-container>
   </div>
 
   <div class="desktop-back-button-container">

@@ -42,6 +42,7 @@ export class NavComponent implements OnInit {
   ngOnInit() {
     this.selectedFilters = [];
     this.filters = filters;
+    console.log(this.filters.length)
     this.test = true;
     this.data.view = 'tiles-2';
     this.currentPage = this.router.routerState.snapshot.url;
@@ -84,17 +85,44 @@ export class NavComponent implements OnInit {
     this.data.showFilterMenu = !this.data.showFilterMenu;
   }
 
-  selectCheckbox(name) {
+  selectCheckbox(filter, name) {
     const upperCaseName = name.toUpperCase();
-    if (this.selectedFilters.includes(upperCaseName)) {
-      const index = this.selectedFilters.indexOf(upperCaseName);
+    const selection = {
+      filter: filter,
+      name: upperCaseName
+    }
+    console.log(this.selectedFilters)
+    console.log(selection)
+    //todo figure out why it's not removing unselected items
+    console.log(this.selectedFilters.includes(selection))
+    if (this.selectedFilters.includes(selection)) {
+      const index = this.selectedFilters.indexOf(selection);
       if (index !== -1) {
         this.selectedFilters.splice(index, 1);
       }
     } else {
-      this.selectedFilters.push(upperCaseName);
+      this.selectedFilters.push(selection);
     }
-    this.data.filterImages(this.selectedFilters);
+    if (this.selectedFilters.length) {
+      this.data.filterImages(this.selectedFilters);
+    } else {
+      this.data.shownImages = this.data.allImages;
+    }
+  }
+
+  getFilterIcon() {
+    console.log(this.data.view)
+    return 'assets/images/' + this.data.view + '.svg';
+  }
+
+  toggleFilterRow(index) {
+    console.log(this.filters)
+    console.log(index)
+    this.filters[index]['showExpandedFilter'] = !this.filters[index]['showExpandedFilter']
+  }
+
+  df(test) {
+    console.log(test)
   }
 
 }

@@ -23,7 +23,6 @@ export class DataProvider {
     this.allImages.sort
     this.allImages.sort((a, b) => a.howrare.rank > b.howrare.rank ? 1 : -1);
     this.shownImages = this.allImages;
-    console.log(this.shownImages[190])
   }
 
   async searchForImage(search) {
@@ -62,19 +61,24 @@ export class DataProvider {
     if (this.isSearching) {
       return;
     }
-    if (items.length == 0) {
-      this.shownImages = this.allImages;
-      return;
-    }
     this.isSearching = true;
     this.shownImages = [];
     this.allImages.map((image, index) => {
-      let attributes = [];
+      let imageMatch = false;
+      let keepMatching = true;
       image.howrare.attributes.map((attribute) => {
-        attributes.push(attribute.value.toUpperCase());
+        items.map((item) => {
+          if (item.filter.toUpperCase() == attribute.name.toUpperCase()) {
+            if (item.name.toUpperCase() == attribute.value.toUpperCase() && keepMatching) {
+              imageMatch = true;
+            } else {
+              imageMatch = false;
+              keepMatching = false;
+            }
+          }
+        });
       });
-      const imageHasAllAttributes = items.every((element) => attributes.includes(element));
-      if (imageHasAllAttributes) {
+      if (imageMatch) {
         this.shownImages.push(image);
       }
       if (index == this.allImages.length - 1) {
