@@ -18,6 +18,7 @@ export class IntroPage implements OnInit {
 
   async ngOnInit() {
     this.data.parseData();
+    console.log(this.data.shownImages[0])
   }
 
 }

@@ -95,11 +95,11 @@ export class NavComponent implements OnInit {
     console.log(selection)
     //todo figure out why it's not removing unselected items
     console.log(this.selectedFilters.includes(selection))
-    if (this.selectedFilters.includes(selection)) {
-      const index = this.selectedFilters.indexOf(selection);
-      if (index !== -1) {
-        this.selectedFilters.splice(index, 1);
-      }
+    const index = this.selectedFilters.findIndex(filter =>
+      filter.filter === selection.filter && filter.name === selection.name
+    );
+    if (index !== -1) {
+      this.selectedFilters.splice(index, 1);
     } else {
       this.selectedFilters.push(selection);
     }
