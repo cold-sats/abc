@@ -6,11 +6,16 @@ tao-button {
     display: inline;
     font: 18px Avenir, serif;
     font-weight: 330;
-    color: black;
+    color: white;
   }
 
   .wrapper {
     position: relative;
+  }
+  
+  .down-arrow {
+    width: 15px;
+    margin-left: 15px;
   }
 
   [disabled] {
@@ -26,16 +31,17 @@ tao-button {
 
   button {
     height:50px;
-    padding: 5px 5px !important;
+    padding: 5px 20px !important;
     display: block;
     width: 100%;
     white-space: normal !important;
     line-height: normal !important;
+    border-radius: 140px !important;
   }
 
   &.primary {
     button {
-      background: #EE9DD3 !important;
+      background: #E2933B !important;
       animation: fadeIn 5s;
     }
   }

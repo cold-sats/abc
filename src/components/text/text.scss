@@ -7,6 +7,22 @@ tao-text {
     color: #EE9DD3;
   }
 
+  .large-title {
+    display: inline;
+    font: 60px Avenir, serif;
+    font-weight: 300;
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  }
+
+  .small-title {
+    display: inline;
+    font: 60px Avenir, serif;
+    font-weight: 200;
+    color: black;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  }
+
   .small-body {
     display: inline;
     font: 12px Avenir, serif;
@@ -16,17 +32,23 @@ tao-text {
 
   .body {
     display: inline;
-    font: 16px Avenir, serif;
+    font: 25px Avenir, serif;
     font-weight: 300;
     color: black;
   }
 
   .header {
     display: inline;
-    font: 20px Avenir, serif;
+    font: 50px Avenir, serif;
     font-weight: 400;
     color: black;
-    line-height: 20px;
+  }
+
+  .header-helper {
+    display: inline;
+    font: 25px Avenir, serif;
+    font-weight: 500;
+    color: #E2933B;
   }
 
   .helper {

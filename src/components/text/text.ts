@@ -29,9 +29,13 @@ export class TextComponent implements OnInit, OnChanges {
   @Input() hero: string;
   @Input() helper: string;
   @Input() header: string;
+  @Input() headerHelper: string;
+  @Input() smallTitle: string;
+  @Input() largeTitle: string;
   @Input() link: string;
   @Input() error: string;
   @Input() title: string;
+  
   cooldown = false;
   currentText = '';
   items = {
@@ -39,8 +43,11 @@ export class TextComponent implements OnInit, OnChanges {
     body: 'body',
     error: 'error',
     header: 'header',
+    headerHelper: 'header-helper',
     hero: 'hero',
     helper: 'helper',
+    smallTitle: 'small-title',
+    largeTitle: 'large-title',
     link: 'link',
     title: 'title'
   };

@@ -1,23 +1,31 @@
 <ng-container *ngIf="navLocation == 'top'">
 
-  <div class="desktop-nav-container">
-    <a (click)="goToPage('/')">
-      <img src="assets/images/abc.png" class="logo">
+<div [ngClass]="data.shownImages.length > 0 ? 'desktop-nav-container' : 'not-scrolled-desktop-nav-container'">
+    <a (click)="goHome()">
+      <img src="assets/images/abc-logo-new.png" class="logo">
     </a>
     <form [formGroup]="form" novalidate action="#" style="display: block; margin: auto; width: 25%; padding-left: 12%; padding-top:3px">
       <div>
         <tao-input
+          *ngIf="data.shownImages.length > 0"
           formControlName="search"
           [form]="form.controls['search']"
-          [label]="'Search'"
+          [label]="'Search the art (example: monsters)'"
           [icon]="'assets/images/search.png'">
         </tao-input>
       </div>
     </form>
     <div style="margin-left: auto;">
-    <img [src]="getFilterIcon()" class="tiles-image" (click)="toggleView()">
-    <img src="assets/images/filter.svg" class="filter-image" (click)="toggleFilter()">
+    <!--<img [src]="getFilterIcon()" class="tiles-image" (click)="toggleView()">
+    <img src="assets/images/filter.svg" class="filter-image" (click)="toggleFilter()">-->
     </div>
+      <tao-button
+        style="margin-top: 10px; margin-right: 10px;"
+        [text]="'Explore'"
+        class="primary"
+        [action]="openExploreMenu.bind(this)"
+        [showDownArrow]="true">
+      </tao-button>
   </div>
 
   <div class="filter-menu" [ngStyle]="{'visibility': data.showFilterMenu ? 'visible' : 'hidden'}" style="overflow: auto;">

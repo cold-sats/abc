@@ -11,6 +11,8 @@ import { DataProvider } from 'src/providers/data'
 
 export class IntroPage implements OnInit {
 
+  showHomePage: boolean;
+
   constructor(
     public data: DataProvider,
     private router: Router,
@@ -18,7 +20,12 @@ export class IntroPage implements OnInit {
 
   async ngOnInit() {
     this.data.parseData();
-    console.log(this.data.shownImages[0])
+    this.showHomePage = true;
+  }
+
+  goToArtPage() {
+    this.data.shownImages = this.data.allImages;
+    window.scrollTo(0, 0);
   }
 
 }

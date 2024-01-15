@@ -12,7 +12,7 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
         [disabled]="disabled || isLoading"
         (click)="executeAction()">
         <span
-          *ngIf="!isLoading"
+          *ngIf="!isLoading && !showDownArrow"
           class="text">
           {{text}}
         </span>
@@ -20,6 +20,13 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
           *ngIf="isLoading"
           class="loader">
         </div>
+        <ng-container *ngIf="showDownArrow">
+          <div
+            class="text">
+            {{text}}
+          </div>
+          <img src="assets/images/down-arrow-white.png" class="down-arrow">
+        </ng-container>
       </button>
     </div>
   `
@@ -29,7 +36,9 @@ export class ButtonComponent {
 
   @Input() action = null;
   @Input() disabled = false;
+  @Input() showDownArrow = false;
   @Input() text: string;
+
   isLoading: boolean;
 
   async executeAction() {

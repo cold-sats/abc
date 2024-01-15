@@ -22,7 +22,7 @@ export class DataProvider {
     });
     this.allImages.sort
     this.allImages.sort((a, b) => a.howrare.rank > b.howrare.rank ? 1 : -1);
-    this.shownImages = this.allImages;
+    this.shownImages = [];
   }
 
   async searchForImage(search) {
@@ -31,15 +31,18 @@ export class DataProvider {
       return;
     }
     if (search == '') {
-      this.shownImages = this.allImages;
+      this.shownImages = [];
+      window.scrollTo(0, 0);
       return;
     }
     this.isSearching = true;
     this.shownImages = [];
+    let abcNumbers = new Set();
     this.allImages.map((image) => {
       const abcNumber = image.howrare.name.slice(5);
-      if (search == abcNumber) {
+      if (search == abcNumber && !abcNumbers.has(abcNumber)) {
         this.shownImages.push(image);
+        abcNumbers.add(abcNumber);
       }
       if (search.includes(':')) {
         const array = search.split(':');
@@ -48,12 +51,14 @@ export class DataProvider {
       }
       image.howrare.attributes.map((attribute) => {
         if (!chosenTrait || chosenTrait.toUpperCase() == attribute.name.toUpperCase()) {
-          if (search.toUpperCase() == attribute.value.toUpperCase()) {
+          if (search.toUpperCase() == attribute.value.toUpperCase() && !abcNumbers.has(abcNumber)) {
             this.shownImages.push(image);
+            abcNumbers.add(abcNumber);
           }
         }
       });
     });
+    window.scrollTo(0, 0);
     this.isSearching = false;
   }
 

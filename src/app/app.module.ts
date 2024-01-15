@@ -11,6 +11,7 @@ import { taoComponents, materialDesignComponents } from 'src/app/components';
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { IonicStorageModule } from '@ionic/storage';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { IonicStorageModule } from '@ionic/storage';
     ...pages
   ],
   imports: [
+    ScrollingModule,
     ...materialDesignComponents,
     AppRoutingModule,
     BrowserModule,

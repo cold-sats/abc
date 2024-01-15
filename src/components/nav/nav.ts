@@ -4,6 +4,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { Location } from '@angular/common'
 import { Router } from '@angular/router';
 import { debounceTime } from 'rxjs/operators';
+import { HostListener } from '@angular/core';
 
 import { DataProvider } from 'src/providers/data'
 import { filters } from 'src/components/nav/filters'
@@ -20,6 +21,7 @@ export class NavComponent implements OnInit {
   filters: any;
   test: boolean;
   form: UntypedFormGroup;
+  previousScrollPosition: number;
   @Input() hideMenuButtons: string;
   @Input() showBackButton: boolean = false;
   @Input() title: string;
@@ -42,7 +44,6 @@ export class NavComponent implements OnInit {
   ngOnInit() {
     this.selectedFilters = [];
     this.filters = filters;
-    console.log(this.filters.length)
     this.test = true;
     this.data.view = 'tiles-2';
     this.currentPage = this.router.routerState.snapshot.url;
@@ -91,10 +92,7 @@ export class NavComponent implements OnInit {
       filter: filter,
       name: upperCaseName
     }
-    console.log(this.selectedFilters)
-    console.log(selection)
     //todo figure out why it's not removing unselected items
-    console.log(this.selectedFilters.includes(selection))
     const index = this.selectedFilters.findIndex(filter =>
       filter.filter === selection.filter && filter.name === selection.name
     );
@@ -123,6 +121,14 @@ export class NavComponent implements OnInit {
 
   df(test) {
     console.log(test)
+  }
+
+  openExploreMenu() {
+    console.log('test')
+  }
+
+  goHome() {
+    this.data.shownImages = [];
   }
 
 }
