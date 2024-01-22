@@ -1,0 +1,84 @@
+<tao-nav></tao-nav>
+
+<div style="margin-top: 80px">
+    <ng-container *ngIf="data.shownImages.length > 0">
+      <ng-container *ngIf="!data.isSearching">
+        <ng-container *ngFor="let image of data.shownImages; let i = index">
+          <div *ngIf="data.view == 'tiles-1'">
+            <div *ngIf="i%2==0" style="width: 100%; display: flex;">
+              <img [src]="image?.ordinal_img_url" [ngClass]="data.showFilterMenu ? 'tiles-1-filter' : 'tiles-1'">
+              <img *ngIf="data.shownImages[i+1]?.ordinal_img_url" [src]="data.shownImages[i+1]?.ordinal_img_url"
+                [ngClass]="data.showFilterMenu ? 'tiles-1-filter' : 'tiles-1'">
+            </div>
+          </div>
+          <div *ngIf="data.view == 'tiles-2'">
+            <div *ngIf="i%4==0" style="width: 100%; display: flex;">
+              <img [src]="image?.ordinal_img_url" [ngClass]="data.showFilterMenu ? 'tiles-2-filter' : 'tiles-2'">
+              <img *ngIf="data.shownImages[i+1]?.ordinal_img_url" [src]="data.shownImages[i+1]?.ordinal_img_url"
+                [ngClass]="data.showFilterMenu ? 'tiles-2-filter' : 'tiles-2'">
+              <img *ngIf="data.shownImages[i+2]?.ordinal_img_url" [src]="data.shownImages[i+2]?.ordinal_img_url"
+                [ngClass]="data.showFilterMenu ? 'tiles-2-filter' : 'tiles-2'">
+              <img *ngIf="data.shownImages[i+3]?.ordinal_img_url" [src]="data.shownImages[i+3]?.ordinal_img_url"
+                [ngClass]="data.showFilterMenu ? 'tiles-2-filter' : 'tiles-2'">
+            </div>
+          </div>
+          <div *ngIf="data.view == 'tiles-3'">
+            <div *ngIf="i%8==0" style="width: 100%; display: flex;">
+              <img [src]="image?.ordinal_img_url" [ngClass]="data.showFilterMenu ? 'tiles-3-filter' : 'tiles-3'">
+              <img *ngIf="data.shownImages[i+1]?.ordinal_img_url" [src]="data.shownImages[i+1]?.ordinal_img_url"
+                [ngClass]="data.showFilterMenu ? 'tiles-3-filter' : 'tiles-3'">
+              <img *ngIf="data.shownImages[i+2]?.ordinal_img_url" [src]="data.shownImages[i+2]?.ordinal_img_url"
+                [ngClass]="data.showFilterMenu ? 'tiles-3-filter' : 'tiles-3'">
+              <img *ngIf="data.shownImages[i+3]?.ordinal_img_url" [src]="data.shownImages[i+3]?.ordinal_img_url"
+                [ngClass]="data.showFilterMenu ? 'tiles-3-filter' : 'tiles-3'">
+              <img *ngIf="data.shownImages[i+4]?.ordinal_img_url" [src]="data.shownImages[i+4]?.ordinal_img_url"
+                [ngClass]="data.showFilterMenu ? 'tiles-3-filter' : 'tiles-3'">
+              <img *ngIf="data.shownImages[i+5]?.ordinal_img_url" [src]="data.shownImages[i+5]?.ordinal_img_url"
+                [ngClass]="data.showFilterMenu ? 'tiles-3-filter' : 'tiles-3'">
+              <img *ngIf="data.shownImages[i+6]?.ordinal_img_url" [src]="data.shownImages[i+6]?.ordinal_img_url"
+                [ngClass]="data.showFilterMenu ? 'tiles-3-filter' : 'tiles-3'">
+              <img *ngIf="data.shownImages[i+7]?.ordinal_img_url" [src]="data.shownImages[i+7]?.ordinal_img_url"
+                [ngClass]="data.showFilterMenu ? 'tiles-3-filter' : 'tiles-3'">
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+    
+      <ng-container *ngIf="data.isSearching">
+        <ng-container *ngFor="let image of data.allImages; let i = index">
+          <div *ngIf="data.view == 'tiles-1'">
+            <div style="width: 100%; display: flex;">
+              <tao-skeleton [height]="50">
+              </tao-skeleton>
+              <tao-skeleton [height]="50">
+              </tao-skeleton>
+            </div>
+          </div>
+          <div *ngIf="data.view == 'tiles-1'">
+            <div style="width: 100%; display: flex;">
+              <tao-skeleton [height]="50">
+              </tao-skeleton>
+              <tao-skeleton [height]="50">
+              </tao-skeleton>
+              <tao-skeleton [height]="50">
+              </tao-skeleton>
+              <tao-skeleton [height]="50">
+              </tao-skeleton>
+            </div>
+          </div>
+          <div *ngIf="data.view == 'tiles-1'">
+            <div style="width: 100%; display: flex;">
+              <tao-skeleton [height]="50">
+              </tao-skeleton>
+              <tao-skeleton [height]="50">
+              </tao-skeleton>
+              <tao-skeleton [height]="50">
+              </tao-skeleton>
+              <tao-skeleton [height]="50">
+              </tao-skeleton>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+  </div>

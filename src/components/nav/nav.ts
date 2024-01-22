@@ -28,13 +28,14 @@ export class NavComponent implements OnInit {
   currentPage: string;
   navLocation: string;
   selectedFilters: any;
+  showExploreMenu: boolean;
 
   constructor(
     public data: DataProvider,
     private fb: UntypedFormBuilder,
     private location: Location,
     private responsive: BreakpointObserver,
-    private router: Router
+    public router: Router
   ) {
     this.form = this.fb.group({
       search: ['', Validators.required]
@@ -66,6 +67,7 @@ export class NavComponent implements OnInit {
 
   goToPage(page) {
     this.router.navigate([page]);
+    window.scrollTo(0, 0);
   }
 
   goBack() {
@@ -127,8 +129,8 @@ export class NavComponent implements OnInit {
     console.log('test')
   }
 
-  goHome() {
-    this.data.shownImages = [];
+  toggleShowExploreMenu() {
+    this.showExploreMenu = !this.showExploreMenu;
   }
 
 }

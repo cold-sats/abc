@@ -1,16 +1,16 @@
 <ng-container *ngIf="navLocation == 'top'">
 
-<div [ngClass]="data.shownImages.length > 0 ? 'desktop-nav-container' : 'not-scrolled-desktop-nav-container'">
-    <a (click)="goHome()">
+  <div [ngClass]="router.url == '/gallery' ? 'desktop-nav-container' : 'not-scrolled-desktop-nav-container'">
+    <a (click)="goToPage('')">
       <img src="assets/images/abc-logo-new.png" class="logo">
     </a>
     <form [formGroup]="form" novalidate action="#" style="display: block; margin: auto; width: 25%; padding-left: 12%; padding-top:3px">
       <div>
         <tao-input
-          *ngIf="data.shownImages.length > 0"
+          *ngIf="router.url == '/gallery'"
           formControlName="search"
           [form]="form.controls['search']"
-          [label]="'Search the art (example: monsters)'"
+          [label]="'Search (example: monsters)'"
           [icon]="'assets/images/search.png'">
         </tao-input>
       </div>
@@ -23,12 +23,46 @@
         style="margin-top: 10px; margin-right: 10px;"
         [text]="'Explore'"
         class="primary"
-        [action]="openExploreMenu.bind(this)"
+        [action]="toggleShowExploreMenu.bind(this)"
         [showDownArrow]="true">
       </tao-button>
   </div>
 
-  <div class="filter-menu" [ngStyle]="{'visibility': data.showFilterMenu ? 'visible' : 'hidden'}" style="overflow: auto;">
+  <div *ngIf="showExploreMenu" class="filter-menu" style="margin-right: 10px; box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.24), 0px 0px 3px rgba(0, 0, 0, 0.24);
+  z-index: 1; background-color: #E2933B; width: 200px; border-radius: 10px; float: right; height: auto;"
+  (click)="$event.stopPropagation()">
+    <div style="color: white; cursor: pointer; opacity: 0.8; padding-bottom: 15px; border-bottom: 1px solid white">
+      <div (click)="goToPage('gallery')" style="display: flex; align-items: center" [ngStyle]="{'opacity': isHoveringArt ? '0.7' : '1'}" (mouseover)="isHoveringArt = true" (mouseout)="isHoveringArt = false">
+        <img src="assets/images/crayon-box.svg" style="width: 30px; margin-right: 10px;">
+        <span style="display: inline;
+        font: 18px Avenir, serif;
+        font-weight: 400;
+        color: white;">Art Gallery</span>
+      </div>
+    </div>
+    <div style="color: white; cursor: pointer; opacity: 0.8; padding-top: 15px; padding-bottom: 15px; border-bottom: 1px solid white">
+      <div (click)="goToPage('origin')" style="display: flex; align-items: center" [ngStyle]="{'opacity': isHoveringOrigin ? '0.7' : '1'}" (mouseover)="isHoveringOrigin = true" (mouseout)="isHoveringOrigin = false">
+        <img src="assets/images/rocket.svg" style="width: 30px; margin-right: 10px;">
+        <span style="display: inline;
+        font: 18px Avenir, serif;
+        font-weight: 400;
+        color: white;">Origin Story</span>
+      </div>
+    </div>
+    <div style="color: white; cursor: pointer; opacity: 0.8; padding-top: 15px; margin-bottom: 5px">
+      <div (click)="goToPage('abc-ventures')" style="display: flex; align-items: center" [ngStyle]="{'opacity': isHoveringVentures ? '0.7' : '1'}" (mouseover)="isHoveringVentures = true" (mouseout)="isHoveringVentures = false">
+        <img src="assets/images/whale.svg" style="width: 30px; margin-right: 10px;">
+        <span style="display: inline;
+        font: 18px Avenir, serif;
+        font-weight: 400;
+        color: white;">ABC Ventures</span>
+      </div>
+    </div>
+  </div>
+
+  <div (click)="showExploreMenu = false" style="position: fixed; top: 0; bottom: 0; left: 0; right: 0; z-index: 0;"></div>
+
+  <!--<div class="filter-menu" [ngStyle]="{'visibility': data.showFilterMenu ? 'visible' : 'hidden'}" style="overflow: auto;">
     <tao-row>
       <img src="assets/images/filter.svg" class="filter-icon">
       <tao-text
@@ -55,7 +89,7 @@
         </div>
       </div>
     </ng-container>
-  </div>
+  </div>-->
 
   <div class="desktop-back-button-container">
     <a

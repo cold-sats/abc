@@ -1,0 +1,91 @@
+
+<tao-nav>
+  
+</tao-nav>
+
+<div *ngIf="data?.page == 'loading'">
+  <div style="margin: 150px 50px 50px 50px">
+    <div *ngIf="i%4==0" style="width: 100%; display: flex;">
+      <tao-skeleton >
+      </tao-skeleton>
+    </div>
+  </div>
+</div>
+
+<div style="margin: -10px">
+
+    <img src="assets/images/abc-monster.jpeg" style="top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; margin-bottom: 100px">
+    <tao-text 
+      [largeTitle]="'All good things are wild and free.'"
+      style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+    </tao-text>
+
+    <div style="display: flex; margin-left: 10%; margin-bottom: 50px">
+      <div style="width: 50%; margin-right: 10%">
+        <tao-text [smallTitle]="'EXPLORE THE ART'"></tao-text><br>
+        <tao-text [body]="'An 8,152 collection of art that reminds us what it was like when we were kids.'"></tao-text>
+      </div>
+      <div style="display: flex; margin-right: 10%">
+        <div>
+          <tao-text [header]="'8,152'"></tao-text><br>
+          <tao-text [headerHelper]="'ORDINALS'"></tao-text>
+        </div>
+        <div  style="padding-left: 40px">
+          <tao-text [header]="'1.9k'"></tao-text><br>
+          <tao-text [headerHelper]="'OWNERS'"></tao-text>
+        </div>
+      </div>
+    </div>
+
+        <img style="width: 100%; margin: auto;" src="assets/images/abc-art.png">
+
+    <div style="display: flex; justify-content: center;">
+      <tao-button style="height: 50px; margin-top: 50px; margin-bottom: 100px; width: 40%" [text]="'View Art Gallery'" class="primary"
+        [action]="goToPage.bind(this, 'gallery')">
+      </tao-button>
+    </div>
+
+    <div style="position: relative;">
+      <img src="assets/images/abc-ventures.png" style="width: 100%; margin-bottom: 100px">
+      <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+        <div style="display: inline;
+            text-shadow: -1px 0 white, 0 1px black, 1px 0 black, 0 -1px black;
+            font: 40px Avenir, serif;
+            font-weight: 300;
+            color: white;">
+          A close network of founders, investors, & friends who hold 30+ ABC Ordinals
+        </div>
+        <div style="display: flex; justify-content: center; margin-top: 40px">
+          <div>
+            <tao-text class="link" [headerHelper]="'<u>VENTURES X</u>'" (click)="goToURL('https://twitter.com/ABCV3NTURES')"></tao-text>
+          </div>
+          <div style="border-left: 2px solid #E2933B; height: 20px; margin: auto 20px;"></div>
+          <div>
+            <tao-text class="link" [headerHelper]="'<u>LEARN MORE</u>'" (click)="goToPage('abc-ventures')"></tao-text>
+          </div>
+        </div>
+      </div> 
+    </div>
+    
+    <div style="position: relative;">
+        <img src="assets/images/abc-collage.png" style="width: 100%">
+        <div style="position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+            <div style="display: flex; flex-direction: column; align-items: center;">
+                <tao-text [smallTitle]="'Decentralized, CC0, immutable art forever inscribed on Bitcoin'"></tao-text>
+                <tao-button style="height: 50px; margin-top: 50px; margin-bottom: 100px; width: 40%" [text]="'Start Collecting'"
+                  class="primary" [action]="goToURL.bind(this, 'https://magiceden.io/ordinals/marketplace/abc-abracadabra')">
+                </tao-button>
+            </div>      
+        </div>
+    </div>
+
+    <div style="background-color: #E2933B; height: 90px; margin-top: -90px">
+    </div>
+
+    <div style="position: relative; z-index: 1; margin-top: -40px; display: flex; justify-content: flex-end; align-items: center">
+      <img class="link" (click)="goToURL('https://magiceden.io/ordinals/marketplace/abc-abracadabra')" src="assets/images/magic-eden.png" style="margin-right: 30px; height: 30px; cursor: pointer;">
+      <img class="link" (click)="goToURL('https://twitter.com/ABCOrdinals')" src="assets/images/x.svg" style="margin-right: 30px; height: 30px; cursor: pointer;">
+    </div>
+</div>
+
+  

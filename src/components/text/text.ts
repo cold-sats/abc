@@ -32,6 +32,7 @@ export class TextComponent implements OnInit, OnChanges {
   @Input() headerHelper: string;
   @Input() smallTitle: string;
   @Input() largeTitle: string;
+  @Input() articleTitle: string;
   @Input() link: string;
   @Input() error: string;
   @Input() title: string;
@@ -48,6 +49,7 @@ export class TextComponent implements OnInit, OnChanges {
     helper: 'helper',
     smallTitle: 'small-title',
     largeTitle: 'large-title',
+    articleTitle: 'article-title',
     link: 'link',
     title: 'title'
   };

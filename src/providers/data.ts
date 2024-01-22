@@ -6,6 +6,7 @@ import { data } from 'src/data/data'
 export class DataProvider {
 
   shownImages: any[];
+  page: string;
   allImages: any[];
   isSearching: boolean;
   view: any;

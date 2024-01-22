@@ -19,6 +19,7 @@ export class SkeletonComponent implements OnInit {
     this.styles = {
       'height': `${this.height}px`,
     };
+    console.log(this.width)
     if (this.width) {
       this.styles['width'] = `${this.width}px`
     } else {
