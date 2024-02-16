@@ -1,5 +1,4 @@
-import { Component, NgModule, OnInit } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { DataProvider } from 'src/providers/data'
@@ -25,6 +24,11 @@ export class HomePage implements OnInit {
 
   goToURL(url: string) {
     window.open(url, "_blank");
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    console.log(event.target.innerWidth)
   }
 
 }

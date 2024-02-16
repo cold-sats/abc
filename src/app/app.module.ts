@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from 'src/app/app.component';
 import { AppRoutingModule } from 'src/app/app-routing.module';
@@ -27,6 +28,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     BrowserModule,
     BrowserAnimationsModule,
     NgxChartsModule,
+    HttpClientModule,
     IonicStorageModule.forRoot()
   ],
   exports: [

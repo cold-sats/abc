@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-
-import { data } from 'src/data/data'
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class DataProvider {
@@ -10,22 +9,38 @@ export class DataProvider {
   allImages: any[];
   isSearching: boolean;
   view: any;
+  rawData: any;
   showFilterMenu: boolean;
+  showRarity: boolean = true;
 
-  constructor() {}
+  constructor(
+    private http: HttpClient
+  ) {}
 
   async parseData() {
     this.allImages = [];
-    Object.keys(data).forEach((key) => {
+    await this.loadDataJSON();
+    console.log(this.rawData);
+    Object.keys(this.rawData).forEach((key) => {
       this.allImages.push({
-        ...data[key]
+        ...this.rawData[key]
       });
     });
-    this.allImages.sort
+    this.allImages = this.allImages.filter((item) => item?.ordinal)
     this.allImages.sort((a, b) => a.howrare.rank > b.howrare.rank ? 1 : -1);
     this.shownImages = [];
   }
 
+  async loadDataJSON() {
+    return new Promise((resolve, reject) => {
+      this.http.get('assets/abc-image-data.json').subscribe(data => {
+        this.rawData = data;
+        resolve(data);
+      }, error => {
+        reject(error);
+      });
+    });
+  }
   async searchForImage(search) {
     let chosenTrait = null;
     if (this.isSearching) {
@@ -91,6 +106,10 @@ export class DataProvider {
         this.isSearching = false;
       }
     });
+  }
+
+  toggleRarity() {
+    this.showRarity = !this.showRarity;
   }
 
 }
